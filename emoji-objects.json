@@ -1,0 +1,597 @@
+[
+    {
+        "name": "speaker with one sound wave \u0432\u2030\u0409 speaker on",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128265;"
+        ],
+        "unicode": [
+            "U+1F509"
+        ]
+    },
+    {
+        "name": "cheering megaphone \u0432\u2030\u0409 megaphone",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128227;"
+        ],
+        "unicode": [
+            "U+1F4E3"
+        ]
+    },
+    {
+        "name": "postal horn",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128239;"
+        ],
+        "unicode": [
+            "U+1F4EF"
+        ]
+    },
+    {
+        "name": "bell",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128276;"
+        ],
+        "unicode": [
+            "U+1F514"
+        ]
+    },
+    {
+        "name": "musical note",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127925;"
+        ],
+        "unicode": [
+            "U+1F3B5"
+        ]
+    },
+    {
+        "name": "microphone",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127908;"
+        ],
+        "unicode": [
+            "U+1F3A4"
+        ]
+    },
+    {
+        "name": "headphone",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127911;"
+        ],
+        "unicode": [
+            "U+1F3A7"
+        ]
+    },
+    {
+        "name": "radio",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128251;"
+        ],
+        "unicode": [
+            "U+1F4FB"
+        ]
+    },
+    {
+        "name": "saxophone",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127927;"
+        ],
+        "unicode": [
+            "U+1F3B7"
+        ]
+    },
+    {
+        "name": "musical keyboard",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127929;"
+        ],
+        "unicode": [
+            "U+1F3B9"
+        ]
+    },
+    {
+        "name": "violin",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127931;"
+        ],
+        "unicode": [
+            "U+1F3BB"
+        ]
+    },
+    {
+        "name": "drum with drumsticks \u0432\u2030\u0409 drum",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#129345;"
+        ],
+        "unicode": [
+            "U+1F941"
+        ]
+    },
+    {
+        "name": "mobile phone",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128241;"
+        ],
+        "unicode": [
+            "U+1F4F1"
+        ]
+    },
+    {
+        "name": "telephone receiver",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128222;"
+        ],
+        "unicode": [
+            "U+1F4DE"
+        ]
+    },
+    {
+        "name": "battery",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128267;"
+        ],
+        "unicode": [
+            "U+1F50B"
+        ]
+    },
+    {
+        "name": "electric plug",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128268;"
+        ],
+        "unicode": [
+            "U+1F50C"
+        ]
+    },
+    {
+        "name": "personal computer \u0432\u2030\u0409 laptop computer",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128187;"
+        ],
+        "unicode": [
+            "U+1F4BB"
+        ]
+    },
+    {
+        "name": "floppy disk",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128190;"
+        ],
+        "unicode": [
+            "U+1F4BE"
+        ]
+    },
+    {
+        "name": "dvd",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128192;"
+        ],
+        "unicode": [
+            "U+1F4C0"
+        ]
+    },
+    {
+        "name": "movie camera",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127909;"
+        ],
+        "unicode": [
+            "U+1F3A5"
+        ]
+    },
+    {
+        "name": "clapper board",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127916;"
+        ],
+        "unicode": [
+            "U+1F3AC"
+        ]
+    },
+    {
+        "name": "television",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128250;"
+        ],
+        "unicode": [
+            "U+1F4FA"
+        ]
+    },
+    {
+        "name": "camera",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128247;"
+        ],
+        "unicode": [
+            "U+1F4F7"
+        ]
+    },
+    {
+        "name": "left-pointing magnifying glass",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128269;"
+        ],
+        "unicode": [
+            "U+1F50D"
+        ]
+    },
+    {
+        "name": "microscope",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128300;"
+        ],
+        "unicode": [
+            "U+1F52C"
+        ]
+    },
+    {
+        "name": "satellite antenna",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128225;"
+        ],
+        "unicode": [
+            "U+1F4E1"
+        ]
+    },
+    {
+        "name": "electric light bulb \u0432\u2030\u0409 light bulb",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128161;"
+        ],
+        "unicode": [
+            "U+1F4A1"
+        ]
+    },
+    {
+        "name": "electric torch \u0432\u2030\u0409 flashlight",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128294;"
+        ],
+        "unicode": [
+            "U+1F526"
+        ]
+    },
+    {
+        "name": "izakaya lantern \u0432\u2030\u0409 red paper lantern",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127982;"
+        ],
+        "unicode": [
+            "U+1F3EE"
+        ]
+    },
+    {
+        "name": "closed book",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128213;"
+        ],
+        "unicode": [
+            "U+1F4D5"
+        ]
+    },
+    {
+        "name": "books",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128218;"
+        ],
+        "unicode": [
+            "U+1F4DA"
+        ]
+    },
+    {
+        "name": "scroll",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128220;"
+        ],
+        "unicode": [
+            "U+1F4DC"
+        ]
+    },
+    {
+        "name": "money bag",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128176;"
+        ],
+        "unicode": [
+            "U+1F4B0"
+        ]
+    },
+    {
+        "name": "banknote with yen sign \u0432\u2030\u0409 yen banknote",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128180;"
+        ],
+        "unicode": [
+            "U+1F4B4"
+        ]
+    },
+    {
+        "name": "credit card",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128179;"
+        ],
+        "unicode": [
+            "U+1F4B3"
+        ]
+    },
+    {
+        "name": "e-mail symbol \u0432\u2030\u0409 e-mail",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128231;"
+        ],
+        "unicode": [
+            "U+1F4E7"
+        ]
+    },
+    {
+        "name": "package",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128230;"
+        ],
+        "unicode": [
+            "U+1F4E6"
+        ]
+    },
+    {
+        "name": "briefcase",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128188;"
+        ],
+        "unicode": [
+            "U+1F4BC"
+        ]
+    },
+    {
+        "name": "calendar",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128197;"
+        ],
+        "unicode": [
+            "U+1F4C5"
+        ]
+    },
+    {
+        "name": "pushpin",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128204;"
+        ],
+        "unicode": [
+            "U+1F4CC"
+        ]
+    },
+
+    {
+        "name": "paperclip",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128206;"
+        ],
+        "unicode": [
+            "U+1F4CE"
+        ]
+    },
+    {
+        "name": "triangular ruler",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128208;"
+        ],
+        "unicode": [
+            "U+1F4D0"
+        ]
+    },
+    {
+        "name": "lock",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128274;"
+        ],
+        "unicode": [
+            "U+1F512"
+        ]
+    },
+    {
+        "name": "key",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128273;"
+        ],
+        "unicode": [
+            "U+1F511"
+        ]
+    },
+    {
+        "name": "hammer",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128296;"
+        ],
+        "unicode": [
+            "U+1F528"
+        ]
+    },
+    {
+        "name": "pistol",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128299;"
+        ],
+        "unicode": [
+            "U+1F52B"
+        ]
+    },
+    {
+        "name": "bow and arrow",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#127993;"
+        ],
+        "unicode": [
+            "U+1F3F9"
+        ]
+    },
+    {
+        "name": "wrench",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128295;"
+        ],
+        "unicode": [
+            "U+1F527"
+        ]
+    },
+    {
+        "name": "nut and bolt",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128297;"
+        ],
+        "unicode": [
+            "U+1F529"
+        ]
+    },
+    {
+        "name": "syringe",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128137;"
+        ],
+        "unicode": [
+            "U+1F489"
+        ]
+    },
+    {
+        "name": "pill",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128138;"
+        ],
+        "unicode": [
+            "U+1F48A"
+        ]
+    },
+    {
+        "name": "smoking symbol \u0432\u2030\u0409 smoking",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128684;"
+        ],
+        "unicode": [
+            "U+1F6AC"
+        ]
+    },
+    {
+        "name": "moyai \u0432\u2030\u0409 moai",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128511;"
+        ],
+        "unicode": [
+            "U+1F5FF"
+        ]
+    },
+    {
+        "name": "crystal ball",
+        "category": "objects",
+        "group": "objects",
+        "htmlCode": [
+            "&#128302;"
+        ],
+        "unicode": [
+            "U+1F52E"
+        ]
+    }
+]

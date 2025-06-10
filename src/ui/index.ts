@@ -1,9 +1,9 @@
-import { Item } from "./item"
+import { Slot } from "./slot"
 import { Shelf } from "./shelf"
 import { Cabinet } from "./cabinet"
 
 export { 
-  Item,
+  Slot,
   Shelf,
   Cabinet,
 }

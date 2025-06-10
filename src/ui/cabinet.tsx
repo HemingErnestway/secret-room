@@ -1,7 +1,7 @@
-import { type TCabinet } from "../lib/definitions"
+import { type Cabinet } from "../lib/definitions"
 import { Shelf } from "../ui"
 
-export function Cabinet({ cabinet }: { cabinet: TCabinet }) {
+export function Cabinet({ cabinet }: { cabinet: Cabinet }) {
   return (
     <div className="cabinet">
       {cabinet.map((shelf, index) => (

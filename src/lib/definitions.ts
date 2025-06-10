@@ -11,6 +11,14 @@ export type EmojiData = {
   unicode: string[];
 }
 
-export type Emoji = string
-export type TShelf = FixedArray<Emoji, 5>
-export type TCabinet = FixedArray<TShelf, 6>
+export type Level = {
+  shelves: 1 | 2 | 3 | 4 | 5 | 6;
+  itemSlots: 1 | 2 | 3 | 4 | 5;
+}
+
+export type Item = { value: string }
+export type Empty = { value: "" }
+export type Locked = { value: null }
+export type Slot = Item | Empty | Locked
+export type Shelf = FixedArray<Slot, 5>
+export type Cabinet = FixedArray<Shelf, 6>

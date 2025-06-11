@@ -12,8 +12,9 @@ export type EmojiData = {
 }
 
 export type Level = {
-  shelves: 1 | 2 | 3 | 4 | 5 | 6;
-  slots: 1 | 2 | 3 | 4 | 5;
+  shelves: number;
+  slots: number;
+  attempts: number;
 }
 
 export type Item = { 

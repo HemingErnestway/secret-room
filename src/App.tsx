@@ -1,38 +1,66 @@
-import { useEffect, useState } from "react"
-import { type Level, type Item, type ItemsForLevel } from "./lib/definitions"
+import { useEffect, useRef, useState } from "react"
+import { type Level, type Item, type ItemsForLevel, type GameStage } from "./lib/definitions"
 import { generateItemsForLevel, generateCabinet } from "./lib/functions"
-import { Cabinet, ItemPicker } from "./ui"
+import { Cabinet, ItemPicker, Stats, StartGuessing } from "./ui"
 import _ from "lodash"
 
-// export type GameState = "memorizing" | "guessing"
-
 export function App() {
-  // const [gameState, setGameState] = useState<GameState>("memorizing")
-
-  const [level, setLevel] = useState<Level>({ shelves: 1, slots: 5, attempts: 0 })
+  const [level, setLevel] = useState<Level>({ shelves: 3, slots: 1, attempts: 2 })
   const [items, setItems] = useState<ItemsForLevel>(generateItemsForLevel(level))
   const [strikes, setStrikes] = useState(0)
   const [itemsToBePicked, setItemsToBePicked] = useState<Item[]>(_.sampleSize(_.cloneDeep(items.real), items.pick))
   const [pickerPool, setPickerPool] = useState<Item[]>(_.shuffle([...itemsToBePicked, ...items.fake]))
   const [cabinet, setCabinet] = useState(generateCabinet(level, items.real))
-  const [guessing, setGuessing] = useState(false)
+  const [gameStage, setGameStage] = useState<GameStage>("start")
+
+  const prevLevel = useRef(level)
+  const prevStrikes = useRef(strikes)
 
   useEffect(() => {
-    const newItems = generateItemsForLevel(level)
-    const newItemsToBePicked = _.sampleSize(_.cloneDeep(newItems.real), newItems.pick)
-    setItems(newItems)
-    setItemsToBePicked(newItemsToBePicked)
-    setPickerPool(_.shuffle([...newItemsToBePicked, ...newItems.fake]))
-    setCabinet(generateCabinet(level, newItems.real))
-    setGuessing(false)
+    if (prevLevel.current !== level || prevStrikes.current !== strikes) {
+      const newItems = generateItemsForLevel(level)
+      const newItemsToBePicked = _.sampleSize(_.cloneDeep(newItems.real), newItems.pick)
+
+      setItems(newItems)
+      setItemsToBePicked(newItemsToBePicked)
+      setPickerPool(_.shuffle([...newItemsToBePicked, ...newItems.fake]))
+      setCabinet(generateCabinet(level, newItems.real))
+
+      setGameStage("memorizing")
+
+      // if (level.shelves === 1 && level.slots === 5 && level.attempts === 0) {
+      //   setTimeLeft(60)
+      //   setTimerRunning(true)
+      // }
+    }
+    prevLevel.current = level
+    prevStrikes.current = strikes
   }, [level, strikes])
 
-  // const handleGameStart = () => {
-  // }
+  const [timeLeft, setTimeLeft] = useState(60)
+  const [timerRunning, setTimerRunning] = useState(false)
+
+  useEffect(() => {
+    let interval: number | undefined
+
+    if (timerRunning && timeLeft > 0) {
+      interval = window.setInterval(() => {
+        setTimeLeft((prev) => prev - 1)
+      }, 1000)
+    } else if (timerRunning && timeLeft <= 0) {
+      handleGameOver()
+    }
+
+    return () => {
+      if (interval) clearInterval(interval)
+    }
+  }, [timerRunning, timeLeft])
 
   const handleGameOver = () => {
-    setLevel({ shelves: 1, slots: 5, attempts: 0 })
     setStrikes(0)
+    setTimeLeft(60)
+    setTimerRunning(false)
+    setGameStage("result")
   }
 
   const handleLevelUp = () => {
@@ -49,129 +77,140 @@ export function App() {
     }
   }
 
-  const handlePick = (itemValue: string) => {
-    const pickedItem = _.find(itemsToBePicked, _.matchesProperty("value", itemValue))
-    if (pickedItem !== undefined) {
-      // correct
-      pickedItem.hidden = true
-      setItemsToBePicked([...itemsToBePicked])
+  const handlePick = (value: string) => {
+    console.log(itemsToBePicked)
 
-      if (_.find(itemsToBePicked, _.matchesProperty("hidden", false)) === undefined) {
-        // level up
-        handleLevelUp()  
-      }
-    } else {
-      // wrong
-      if (strikes === 2) {
-        handleGameOver()
-        return
-      }
-      setStrikes(strikes + 1)
-    }
+    setItemsToBePicked((old) =>
+      old.map((item) =>
+        item.value === value 
+          ? { ...item, hidden: true } 
+          : item
+      )
+    )
+
+    setTimeout(() => {
+      setItemsToBePicked((latest) => {
+        if (latest.every((item) => item.hidden)) {
+          handleLevelUp()
+        }
+        return latest
+      })
+    }, 0)
   }
 
   const handleStartGuessing = () => {
-    setGuessing(true)
-    
-    // hide all items 
-    const hiddenCabinet = _.cloneDeep(cabinet)
-    const hiddenPickerPool = _.cloneDeep(pickerPool)
+    setGameStage("guessing")
 
-    hiddenCabinet.forEach(shelf => {
-      shelf.forEach(slot => {
+    // 1) Deep-clone the current cabinet and pickerPool:
+    const hiddenCabinet = _.cloneDeep(cabinet)
+    const hiddenPickerPool = pickerPool.map((item) => ({
+      ...item,
+      hidden: true,
+    }))
+
+    // 2) Hide every item‐slot in the cabinet:
+    hiddenCabinet.forEach((shelf) => {
+      shelf.forEach((slot, idx) => {
         if (slot.content === "item") {
-          slot.hidden = true
+          // overwrite that slot with a new object
+          shelf[idx] = { ...slot, hidden: true }
         }
       })
     })
 
-    hiddenPickerPool.forEach(item => {
-      item.hidden = true
-    })
-
+    // 3) Push these into state immediately:
     setCabinet(hiddenCabinet)
     setPickerPool(hiddenPickerPool)
 
-    // reveal all the items in 1s
+    // 4) After 1s, reveal all, then immediately re-hide only the “to-be-picked” ones:
     setTimeout(() => {
-      const revealedCabinet = _.cloneDeep(cabinet)
-      const revealedPickerPool = _.cloneDeep(pickerPool)
+      // a) Reveal everything
+      const revealedCabinet = _.cloneDeep(hiddenCabinet)
+      const revealedPickerPool = hiddenPickerPool.map((item) => ({
+        ...item,
+        hidden: false,
+      }))
 
       revealedCabinet.forEach((shelf) => {
-        shelf.forEach((slot) => {
+        shelf.forEach((slot, idx) => {
           if (slot.content === "item") {
-            slot.hidden = false
+            shelf[idx] = { ...slot, hidden: false }
           }
         })
-      })
-
-      revealedPickerPool.forEach(item => {
-        item.hidden = false
       })
 
       setCabinet(revealedCabinet)
       setPickerPool(revealedPickerPool)
 
-      // hide items to be picked 
-      setTimeout(() => {
-        const newCabinet = _.cloneDeep(cabinet)
-        const valuesToBePicked = _.map(itemsToBePicked, "value")
+      // b) Immediately hide only those values we need to pick
+      const pickSet = new Set(itemsToBePicked.map((i) => i.value))
+      const finalCabinet = _.cloneDeep(revealedCabinet)
 
-        newCabinet.forEach((shelf) => {
-          shelf.forEach((slot) => {
-            if (slot.content === "item" && _.includes(valuesToBePicked, slot.value)) {
-              slot.hidden = true
-            }
-          })
+      finalCabinet.forEach((shelf) => {
+        shelf.forEach((slot, idx) => {
+          if (slot.content === "item" && pickSet.has(slot.value)) {
+            shelf[idx] = { ...slot, hidden: true }
+          }
         })
+      })
 
-        setCabinet(newCabinet)
-      }, 0)
+      setCabinet(finalCabinet)
     }, 1000)
+  }
+
+
+  const handleGameStart = () => {
+    setTimerRunning(true)
+    setGameStage("memorizing")
   }
 
   return (
     <div className="game">
-      <Stats level={level} strikes={strikes} />
-      <Cabinet cabinet={cabinet} />
-      {guessing 
-        ? <ItemPicker itemPool={pickerPool} handlePick={handlePick} />
-        : <StartGuessingButton handleStart={handleStartGuessing} />
+      <Stats level={level} strikes={strikes} timeLeft={timeLeft} />
+
+      {gameStage === "start" && 
+        <StartScreen handleStart={handleGameStart} />
       }
+
+      {gameStage === "guessing" && (
+        <>
+          <Cabinet cabinet={cabinet} />
+          <ItemPicker itemPool={pickerPool} handlePick={handlePick} />
+        </>
+      )}
+
+      {gameStage === "memorizing" && (
+        <>
+          <Cabinet cabinet={cabinet} />
+          <StartGuessing handleStart={handleStartGuessing} />
+        </>
+      )}
+
+      {gameStage === "result" && (
+        <ResultScreen handleStart={handleGameStart} />
+      )}
     </div>
   )
 }
 
-export type IndicatorColor = "red" | "gold" | "gray"
-
-export function Indicator({ color, value }: { color: IndicatorColor, value: number }) {
-  const colors = [...Array(value).fill(color), ...Array(3 - value).fill("gray")]
-
+export function StartScreen({ handleStart }: { handleStart: () => void }) {
   return (
-    <div className="indicator-container">
-      {colors.map(color => (
-        <div className={`indicator indicator-${color}`}> </div>
-      ))}
-    </div>
-  )
-}
-
-export function Stats({ level, strikes }: { level: Level, strikes: number }) {
-  return (
-    <div className="stats">
-      <div className="level">{level.shelves}-{level.slots}</div>
-      <Indicator color="gold" value={level.attempts} />
-      <Indicator color="red" value={strikes} />
-    </div>
-  )
-}
-
-export function StartGuessingButton({ handleStart }: { handleStart: () => void }) {
-  return (
-    <div className="start-guessing">
+    <div className="start-screen">
       <button onClick={handleStart}>
-        Запомнил
+        Начать тест
       </button>
     </div>
   )
 }
+
+export function ResultScreen({ handleStart }: { handleStart: () => void }) {
+  return (
+    <div className="start-screen">
+      <button onClick={handleStart}>
+        Повторить
+      </button>
+    </div>
+  )
+}
+
+

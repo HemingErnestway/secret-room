@@ -107,3 +107,12 @@ body {
 .indicator-gray {
   background: gray;
 }
+
+.start-screen {
+  width: 390px;
+  height: 560px;
+  background: #cccccc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

@@ -42,3 +42,7 @@ export type ItemsForLevel = {
   fake: Item[];
   pick: number,
 }
+
+export type IndicatorColor = "red" | "gold" | "gray"
+
+export type GameStage = "start" | "memorizing" | "guessing" | "result" 

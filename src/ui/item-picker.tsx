@@ -14,7 +14,7 @@ export function ItemPicker({ itemPool, handlePick }: Props) {
           <PickerSlot
             slot={item} 
             handlePick={handlePick}
-            key={item.value} 
+            key={`${item.value}-picker`} 
           />
         )
       ))}

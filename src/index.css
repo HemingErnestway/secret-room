@@ -47,6 +47,8 @@ body {
   gap: 20px;
   padding: 10px;
   background: #dddddd;
+  width: 330px; 
+  height: 190px;
 }
 
 .start-guessing {
@@ -64,4 +66,44 @@ body {
   background: #2e9c3f;
   color: white;
   border: none;
+}
+
+.stats {
+  display: flex;
+  width: 350px;
+  gap: 20px;
+  justify-content: flex-end;
+}
+
+.level {
+  background: #eeeeee;
+  padding: 5px 10px;
+  font-family: monospace;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.indicator-container {
+  display: flex;
+  background: #eeeeee;
+  padding: 5px 10px;
+  gap: 5px;
+}
+
+.indicator {
+  width: 20px;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.indicator-red {
+  background: red;
+}
+
+.indicator-gold {
+  background: #dfab00;
+}
+
+.indicator-gray {
+  background: gray;
 }

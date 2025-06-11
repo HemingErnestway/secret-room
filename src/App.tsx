@@ -31,7 +31,8 @@ export function App() {
   // }
 
   const handleGameOver = () => {
-    console.log("гамовер")
+    setLevel({ shelves: 1, slots: 5, attempts: 0 })
+    setStrikes(0)
   }
 
   const handleLevelUp = () => {
@@ -57,7 +58,6 @@ export function App() {
 
       if (_.find(itemsToBePicked, _.matchesProperty("hidden", false)) === undefined) {
         // level up
-        console.log("level up")
         handleLevelUp()  
       }
     } else {
@@ -72,34 +72,96 @@ export function App() {
 
   const handleStartGuessing = () => {
     setGuessing(true)
-    const newCabinet = _.cloneDeep(cabinet)
-    const valuesToBePicked = _.map(itemsToBePicked, _.property("value"))
+    
+    // hide all items 
+    const hiddenCabinet = _.cloneDeep(cabinet)
+    const hiddenPickerPool = _.cloneDeep(pickerPool)
 
-    newCabinet.forEach(shelf => {
+    hiddenCabinet.forEach(shelf => {
       shelf.forEach(slot => {
-        if (slot.content === "item" && _.includes(valuesToBePicked, slot.value)) {
-          console.log(slot.value)
+        if (slot.content === "item") {
           slot.hidden = true
         }
       })
     })
 
-    setCabinet(newCabinet)
+    hiddenPickerPool.forEach(item => {
+      item.hidden = true
+    })
+
+    setCabinet(hiddenCabinet)
+    setPickerPool(hiddenPickerPool)
+
+    // reveal all the items in 1s
+    setTimeout(() => {
+      const revealedCabinet = _.cloneDeep(cabinet)
+      const revealedPickerPool = _.cloneDeep(pickerPool)
+
+      revealedCabinet.forEach((shelf) => {
+        shelf.forEach((slot) => {
+          if (slot.content === "item") {
+            slot.hidden = false
+          }
+        })
+      })
+
+      revealedPickerPool.forEach(item => {
+        item.hidden = false
+      })
+
+      setCabinet(revealedCabinet)
+      setPickerPool(revealedPickerPool)
+
+      // hide items to be picked 
+      setTimeout(() => {
+        const newCabinet = _.cloneDeep(cabinet)
+        const valuesToBePicked = _.map(itemsToBePicked, "value")
+
+        newCabinet.forEach((shelf) => {
+          shelf.forEach((slot) => {
+            if (slot.content === "item" && _.includes(valuesToBePicked, slot.value)) {
+              slot.hidden = true
+            }
+          })
+        })
+
+        setCabinet(newCabinet)
+      }, 0)
+    }, 1000)
   }
 
   return (
     <div className="game">
-      <div style={{ display: "flex", gap: "40px" }}>
-        <div>Shelves: {level.shelves}</div>
-        <div>Slots: {level.slots}</div>
-        <div>Strikes: {strikes} / 3</div>
-        <div>Attempts: {level.attempts} / 3</div>
-      </div>
+      <Stats level={level} strikes={strikes} />
       <Cabinet cabinet={cabinet} />
       {guessing 
         ? <ItemPicker itemPool={pickerPool} handlePick={handlePick} />
         : <StartGuessingButton handleStart={handleStartGuessing} />
       }
+    </div>
+  )
+}
+
+export type IndicatorColor = "red" | "gold" | "gray"
+
+export function Indicator({ color, value }: { color: IndicatorColor, value: number }) {
+  const colors = [...Array(value).fill(color), ...Array(3 - value).fill("gray")]
+
+  return (
+    <div className="indicator-container">
+      {colors.map(color => (
+        <div className={`indicator indicator-${color}`}> </div>
+      ))}
+    </div>
+  )
+}
+
+export function Stats({ level, strikes }: { level: Level, strikes: number }) {
+  return (
+    <div className="stats">
+      <div className="level">{level.shelves}-{level.slots}</div>
+      <Indicator color="gold" value={level.attempts} />
+      <Indicator color="red" value={strikes} />
     </div>
   )
 }

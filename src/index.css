@@ -4,9 +4,11 @@ body {
 
 .game {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100vh;
+  gap: 20px;
 }
 
 .cabinet {
@@ -24,13 +26,24 @@ body {
   background: #dddddd;
 }
 
-.item {
+.slot {
   width: 50px;
   height: 50px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 40px;
-  background: #eeeeee;
   user-select: none;
+}
+
+.slot.locked {
+  background: #aaaaaa;
+}
+
+.item-picker {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 20px;
+  padding: 10px;
+  background: #dddddd;
 }

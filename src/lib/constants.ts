@@ -1,5 +1,10 @@
-import emojiData from "../../emoji-objects.json"
-import { type Item } from "./definitions"
-import { parseEmojis } from "./functions"
+import type { Item } from "./definitions"
 
-export const EMOJI_OBJECTS: Item[] = parseEmojis(emojiData)
+export const ITEMS: Item[] = 
+  "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+    .split("")
+    .map(value => ({ 
+      content: "item", 
+      value: value, 
+      hidden: false,
+    }))

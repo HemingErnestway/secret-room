@@ -43,3 +43,13 @@ export function useLightsOutTransition(
     return () => clearTimeout(timer)
   }, [gameStage, remainingValues, setCabinet, setGameStage])
 }
+
+export function useLockedBackgrounds() {
+  const assets = import.meta.glob("/src/assets/locked-bg/*.svg", { eager: true })
+  return Object.keys(assets).map((path) => path.split('/').pop())
+}
+
+export function useItemImages() {
+  const assets = import.meta.glob("/src/assets/items/*.png", { eager: true })
+  return Object.keys(assets).map((path) => path.split('/').pop())
+}

@@ -41,3 +41,7 @@ export type Round = {
 export type TSlot = (Item | Empty | Locked) & { id: number }
 export type TShelf = TSlot[]
 export type TCabinet = TShelf[]
+
+export type IndicatorDisplay = "strike" | "attempt"
+export type IndicatorEmpty = "empty"
+export type TIndicator = IndicatorDisplay | IndicatorEmpty

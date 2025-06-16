@@ -1,19 +1,20 @@
 import { type Level } from "../lib/definitions"
-import { Indicator } from "../ui"
+import { formatTime } from "../lib/functions"
+import { Indicator } from "./indicator"
 
 type Props = {
-  level: Level;
-  strikes: number;
-  timeLeft: number;
+  level: Level,
+  timeLeft: number,
+  strikes: number,
 }
 
-export function Stats({ level, strikes, timeLeft }: Props) {
+export function Stats({ level, timeLeft, strikes }: Props) {
   return (
     <div className="stats">
-      <div className="level">{timeLeft}</div>
-      <div className="level">{level.shelves}-{level.slots}</div>
-      <Indicator color="gold" value={level.attempts} />
-      <Indicator color="red" value={strikes} />
+      <div>Time: {formatTime(timeLeft)}</div>
+      <div>Level: {level.shelves}-{level.slots}</div>
+      <Indicator indicator="attempt" value={level.attempts} />
+      <Indicator indicator="strike" value={strikes} />
     </div>
   )
 }

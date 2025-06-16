@@ -1,17 +1,15 @@
-import { useEffect, useMemo, useState } from "react"
+import { useMemo, useState } from "react"
 import type { Level, GameStage, TSlot } from "./lib/definitions"
 import { useCountdownTimer, useLightsOutTransition } from "./lib/hooks"
-import { StartScreen, Cabinet, Picker } from "./ui"
+import { StartScreen, Cabinet, Picker, Stats } from "./ui"
 
 import { 
   calcNextLevel, 
-  formatTime, 
   makeRound, 
   revealByValue,
-  revealExcept,
-  shuffleUnlocked, 
   toggleHidden,
 } from "./lib/functions"
+import { ResultScreen } from "./ui/result-screen"
 
 export function App() {
   const [level, setLevel] = useState<Level>({ shelves: 1, slots: 5, attempts: 1 })
@@ -30,6 +28,8 @@ export function App() {
     timeLeft, setTimeLeft, 
     timerExpired, setTimerExpired,
   } = useCountdownTimer(gameStage, 60)
+
+  useLightsOutTransition(gameStage, setCabinet, setGameStage, remainingValues)
 
   function handleStart() {
     setTimeLeft(60)
@@ -106,8 +106,6 @@ export function App() {
     setGameStage("lightsOut")
   }
 
-  useLightsOutTransition(gameStage, setCabinet, setGameStage, remainingValues)
-
   function handleRestart() {
     const firstLevel = { shelves: 1, slots: 5, attempts: 1 }
 
@@ -119,56 +117,29 @@ export function App() {
   }
 
   return (
-    <div style={{ 
-      display: "flex", 
-      flexDirection: "column", 
-      gap: "20px",
-      alignItems: "center", 
-      justifyContent: "center", 
-      height: "100vh",
-    }}>
-      <div style={{
-        display: "flex", 
-        flexDirection: "column", 
-      }}>
-        <div>Time Left: {formatTime(timeLeft)}</div>
-        <div>Level: {level.shelves}-{level.slots}</div>
-        <div>Attempts: {level.attempts}</div>
-        <div>Strikes: {strikes}</div>
-      </div>
-      <div style={{
-        display: "flex",
-        flexDirection: "column",
-        gap: "50px",
-      }}>
+    <div className="app">
+      <Stats level={level} timeLeft={timeLeft} strikes={strikes} />
+
+      <div className="game-container">
         {gameStage === "start" && (
           <>
             <StartScreen handleStart={handleStart} />
-            <div style={{ height: "190px", background: "#aaa" }}></div>
+            <div style={{ height: "190px", background: "var(--color-bg-light)" }}></div>
           </>
         )}
 
-        {(gameStage === "memorizing" || 
-          gameStage === "lightsOut" ||
-          gameStage === "guessing"
-        ) && (
+        {["memorizing", "lightsOut", "guessing"].includes(gameStage) && (
           <Cabinet cabinet={cabinet} />
         )}
 
         {gameStage === "memorizing" && (
-          <div style={{ 
-            height: "190px", 
-            background: "#aaa",
-            display: "flex", 
-            alignItems: "center", 
-            justifyContent: "center",
-          }}>
+          <div className="ready-container">
             <button onClick={handleGuessing}>Ready</button>
           </div>
         )}
 
         {gameStage === "lightsOut" && (
-          <div style={{ height: "190px", background: "#aaa" }}></div>
+          <div style={{ height: "190px", background: "var(--color-bg-dark)" }}></div>
         )}
 
         {gameStage === "guessing" && (() => {
@@ -190,11 +161,10 @@ export function App() {
         })()}
 
         {gameStage === "result" && (
-          <div>
-            <h2>Results</h2>
-            <div>Score: {((level.shelves * 5 + level.slots - 1) * 3 + level.attempts) * 10}</div> 
-            <button onClick={handleRestart}>Restart</button>
-          </div>
+          <>
+            <ResultScreen level={level} handleRestart={handleRestart} />
+            <div style={{ height: "190px", background: "var(--color-bg-light)" }}></div>
+          </>
         )}
       </div>
     </div>    

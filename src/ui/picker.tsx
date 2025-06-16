@@ -7,14 +7,7 @@ export function Picker({ slots, handlePick, revealedValues }: {
   revealedValues: Set<string>,
 }) {
   return (
-    <div style={{
-      background: "#aaa",
-      padding: "10px",
-      display: "grid",
-      gridTemplateColumns: "repeat(5, 1fr)",
-      gridTemplateRows: "repeat(3, 1fr)",
-      gap: "10px",
-    }}>
+    <div className="picker">
       {slots.map(slot => {
         const isRevealed = slot.content === "item" && revealedValues.has(slot.value)
         if (isRevealed) return null

@@ -3,10 +3,7 @@ import { Slot } from "../ui"
 
 export function Shelf({ shelf }: { shelf: TShelf }) {
   return (
-    <div style={{
-      display: "flex",
-      gap: "10px",
-    }}>
+    <div className="shelf">
       {shelf.map(slot => (
         <Slot 
           slot={slot} 

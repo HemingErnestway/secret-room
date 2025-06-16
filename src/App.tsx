@@ -19,9 +19,9 @@ export function App() {
 
   const round0 = useMemo(() => makeRound(level), [])
 
-  const [items, setItems] = useState(round0.items)
+  const [_items, setItems] = useState(round0.items)
   const [cabinet, setCabinet] = useState(round0.cabinet)
-  const [itemsToPick, setItemsToPick] = useState(round0.itemsToPick)
+  const [_itemsToPick, setItemsToPick] = useState(round0.itemsToPick)
   const [pickerPool, setPickerPool] = useState(round0.pickerPool)
   const [remaining, setRemaining] = useState(round0.remaining)
 

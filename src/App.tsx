@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import { useMemo, useState } from "react"
 import type { Level, GameStage, TSlot } from "./lib/definitions"
 import { useCountdownTimer, useLightsOutTransition } from "./lib/hooks"
@@ -123,8 +124,18 @@ export function App() {
       <div className="game-container">
         {gameStage === "start" && (
           <>
-            <StartScreen handleStart={handleStart} />
-            <div style={{ height: "190px", background: "var(--color-bg-light)" }}></div>
+            <StartScreen />
+            <div className="start-container">
+              <motion.button 
+                onClick={handleStart}
+                whileHover={{ 
+                  scale: 1.1, 
+                  transition: { duration: 0.1 } 
+                }}
+              >
+                Start
+              </motion.button>
+            </div>
           </>
         )}
 
@@ -134,7 +145,15 @@ export function App() {
 
         {gameStage === "memorizing" && (
           <div className="ready-container">
-            <button onClick={handleGuessing}>Ready</button>
+            <motion.button 
+              onClick={handleGuessing}
+              whileHover={{ 
+                scale: 1.1, 
+                transition: { duration: 0.1 } 
+              }}
+            >
+              Ready
+            </motion.button>
           </div>
         )}
 

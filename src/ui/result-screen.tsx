@@ -1,3 +1,4 @@
+import { motion } from "motion/react"
 import { type Level } from "../lib/definitions"
 
 type Props = {
@@ -11,9 +12,15 @@ export function ResultScreen({ level, handleRestart }: Props) {
   return (
     <div className="result-screen">
       <h2>Score: {score}</h2>
-      <button onClick={handleRestart}>
+      <motion.button 
+        onClick={handleRestart}
+        whileHover={{
+          scale: 1.1,
+          transition: { duration: 0.1 }
+        }}
+      >
         Restart
-      </button>
+      </motion.button>
     </div>
   )
 }

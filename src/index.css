@@ -25,6 +25,10 @@ button:hover {
   cursor: pointer;
 }
 
+h2 {
+  font-size: 28px;
+}
+
 .app {
   display: flex;
   flex-direction: column;
@@ -42,11 +46,37 @@ button:hover {
 
 .start-screen {
   background: var(--color-bg-dark);
-  width: 310px;
-  height: 473px;
+  width: 290px;
+  height: 453px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.start-container {
+  height: 190px;
+  background-color: var(--color-bg-dark);
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.start-screen p, h2 {
+  margin: 0;
+}
+
+.start-screen p {
+  font-size: 18px;
+  text-align: center;
+  padding: 0 20px;
+}
+
+.start-screen .title-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ready-container {
@@ -63,6 +93,7 @@ button:hover {
   height: 473px;
   display: flex;
   flex-direction: column;
+  gap: 20px;
   align-items: center;
   justify-content: center;
 }
@@ -91,7 +122,7 @@ button:hover {
   user-select: none;
 }
 
-.slot.item {
+.shelf > .slot.item {
   padding-bottom: 7px;
   margin-bottom: -7px;
 }

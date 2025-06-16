@@ -1,12 +1,18 @@
-import { type Shelf } from "../lib/definitions"
+import { type TShelf } from "../lib/definitions"
 import { Slot } from "../ui"
 
-export function Shelf({ shelf }: { shelf: Shelf }) {
+export function Shelf({ shelf }: { shelf: TShelf }) {
   return (
-    <div className="shelf">
-      {shelf.map((slot, index) => (
-        <Slot slot={slot} key={index} />
-      ))} 
+    <div style={{
+      display: "flex",
+      gap: "10px",
+    }}>
+      {shelf.map(slot => (
+        <Slot 
+          slot={slot} 
+          key={`slot-${slot.id}`} 
+        />
+      ))}
     </div>
   )
 }

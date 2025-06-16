@@ -1,14 +1,14 @@
-import { type PickerSlot } from "../lib/definitions"
+import { type TSlot } from "../lib/definitions"
 import { Slot } from "../ui"
 
-type Props = {
-  slot: PickerSlot,
+export function PickerSlot({ slot, handlePick }: { 
+  slot: TSlot,
   handlePick: (itemValue: string) => void,
-}
-
-export function PickerSlot({ slot, handlePick }: Props) {
+}) {
   return (
-    <div onClick={() => handlePick(slot.content === "item" ? slot.value : "")}>
+    <div onClick={
+      () => handlePick(slot.content === "item" ? slot.value : "")
+    }>
       <Slot slot={slot} />
     </div>
   )

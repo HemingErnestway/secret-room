@@ -45,7 +45,7 @@ export function App() {
     return () => clearInterval(id) 
   }, [gameStage, timerExpired])
 
-  function handleGameStart() {
+  function handleStart() {
     setTimeLeft(60)
     setTimerExpired(false)
     setStrikes(0)
@@ -131,6 +131,16 @@ export function App() {
     return () => clearTimeout(timer)
   }, [gameStage, remaining])
 
+  function handleRestart() {
+    const firstLevel = { shelves: 1, slots: 5, attempts: 1 }
+
+    setTimeLeft(60)
+    setTimerExpired(false)
+    setStrikes(0)
+
+    startNewRound(firstLevel)
+  }
+
   return (
     <div style={{ 
       display: "flex", 
@@ -156,7 +166,7 @@ export function App() {
       }}>
         {gameStage === "start" && (
           <>
-            <StartScreen handleStart={handleGameStart} />
+            <StartScreen handleStart={handleStart} />
             <div style={{ height: "190px", background: "#aaa" }}></div>
           </>
         )}
@@ -206,7 +216,7 @@ export function App() {
           <div>
             <h2>Results</h2>
             <div>Score: {((level.shelves * 5 + level.slots - 1) * 3 + level.attempts) * 10}</div> 
-            <button onClick={handleGameStart}>Restart</button>
+            <button onClick={handleRestart}>Restart</button>
           </div>
         )}
       </div>

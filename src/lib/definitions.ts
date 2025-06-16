@@ -35,7 +35,7 @@ export type Round = {
   cabinet: TCabinet;
   itemsToPick: Item[];
   pickerPool: TSlot[];
-  remaining: Set<string>;
+  remainingValues: Set<string>;
 }
 
 export type TSlot = (Item | Empty | Locked) & { id: number }

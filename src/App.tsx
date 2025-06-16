@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react"
 import type { Level, GameStage, TSlot } from "./lib/definitions"
+import { useCountdownTimer, useLightsOutTransition } from "./lib/hooks"
 import { StartScreen, Cabinet, Picker } from "./ui"
 
 import { 
@@ -23,27 +24,12 @@ export function App() {
   const [cabinet, setCabinet] = useState(round0.cabinet)
   const [_itemsToPick, setItemsToPick] = useState(round0.itemsToPick)
   const [pickerPool, setPickerPool] = useState(round0.pickerPool)
-  const [remaining, setRemaining] = useState(round0.remaining)
+  const [remainingValues, setRemaining] = useState(round0.remainingValues)
 
-  const [timeLeft, setTimeLeft] = useState(60)
-  const [timerExpired, setTimerExpired] = useState(false)
-
-  useEffect(() => {
-    if (["start", "result"].includes(gameStage) || timerExpired) return 
-    
-    const id = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev <= 1) {
-          clearInterval(id)
-          setTimerExpired(true)
-          return 0
-        }
-        return prev - 1
-      })
-    }, 1000)
-
-    return () => clearInterval(id) 
-  }, [gameStage, timerExpired])
+  const { 
+    timeLeft, setTimeLeft, 
+    timerExpired, setTimerExpired,
+  } = useCountdownTimer(gameStage, 60)
 
   function handleStart() {
     setTimeLeft(60)
@@ -61,7 +47,7 @@ export function App() {
     setCabinet(next.cabinet)
     setItemsToPick(next.itemsToPick)
     setPickerPool(next.pickerPool)
-    setRemaining(next.remaining)
+    setRemaining(next.remainingValues)
 
     setGameStage("memorizing")
   }
@@ -89,8 +75,8 @@ export function App() {
 
   function handlePick(val: string) {
     // correct 
-    if (remaining.has(val)) {
-      const nextRemaining = new Set(remaining)
+    if (remainingValues.has(val)) {
+      const nextRemaining = new Set(remainingValues)
       nextRemaining.delete(val)
 
       setCabinet(prev => revealByValue(prev, val))
@@ -120,16 +106,7 @@ export function App() {
     setGameStage("lightsOut")
   }
 
-  useEffect(() => {
-    if (gameStage !== "lightsOut") return
-
-    const timer = setTimeout(() => {
-      setCabinet(prev => revealExcept(shuffleUnlocked(prev), remaining))
-      setGameStage("guessing")
-    }, 1000)
-
-    return () => clearTimeout(timer)
-  }, [gameStage, remaining])
+  useLightsOutTransition(gameStage, setCabinet, setGameStage, remainingValues)
 
   function handleRestart() {
     const firstLevel = { shelves: 1, slots: 5, attempts: 1 }

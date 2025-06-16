@@ -109,7 +109,7 @@ export function makeRound(level: Level): Round {
     cabinet,
     itemsToPick,
     pickerPool: buildPicker(itemsToPick, items.fake),
-    remaining: new Set(itemsToPick.map(i => i.value)),
+    remainingValues: new Set(itemsToPick.map(i => i.value)),
   }
 }
 
@@ -155,4 +155,12 @@ export function formatTime(s: number) {
   const m = Math.floor(s / 60)
   const sec = `${s % 60}`.padStart(2, "0")
   return `${m}:${sec}`
+}
+
+export function prepareCabinetForGuessing(
+  cabinet: TSlot[][],
+  remainingValues: Set<string>,
+): TSlot[][] {
+  const shuffled = shuffleUnlocked(cabinet)
+  return revealExcept(shuffled, remainingValues)
 }

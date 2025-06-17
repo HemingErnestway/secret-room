@@ -4,6 +4,7 @@ import { Cabinet } from "./cabinet"
 import { Picker } from "./picker"
 import { PickerSlot } from "./picker-slot"
 import { StartScreen } from "./start-screen"
+import { ResultScreen } from "./result-screen"
 import { Stats } from "./stats"
 import { Indicator } from "./indicator"
 
@@ -14,6 +15,7 @@ export {
   Picker,
   PickerSlot,
   StartScreen,
+  ResultScreen,
   Stats,
   Indicator,
 }

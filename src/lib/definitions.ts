@@ -1,6 +1,10 @@
+import spriteMap from "../assets/items-sprite.json"
+
+export type SpriteKey = keyof typeof spriteMap
+
 export type Item = { 
   content: "item"; 
-  value: string; 
+  value: SpriteKey; 
   hidden: boolean;
 }
 

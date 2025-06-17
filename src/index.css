@@ -122,11 +122,6 @@ h2 {
   user-select: none;
 }
 
-.shelf > .slot.item {
-  padding-bottom: 7px;
-  margin-bottom: -7px;
-}
-
 .slot.hidden {
   background-image: none;
 }

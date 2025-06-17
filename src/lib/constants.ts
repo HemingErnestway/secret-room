@@ -1,25 +1,14 @@
-// export const ITEM_IMAGES = Object.values(
-//   import.meta.glob("/src/assets/items/*.png", {
-//     eager: true,
-//     import: "default",
-//   })
-// )
+import spriteMap from "../assets/items-sprite.json"
+import type { Item, SpriteKey } from "./definitions"
+import { useLockedBackgrounds } from "./hooks"
 
-// export const LOCKED_BACKGROUND_IMAGES = Object.values(
-//   import.meta.glob("/src/assets/locked-bg/*.svg", {
-//     eager: true,
-//     import: "default",
-//   })
-// )
-
-import { type Item } from "./definitions";
-import { useItemImages, useLockedBackgrounds } from "./hooks";
-
-export const ITEM_IMAGES = useItemImages() 
+// export const ITEM_IMAGES = useItemImages() 
 export const LOCKED_BACKGROUNDS = useLockedBackgrounds()
+export const SPRITE_KEYS: SpriteKey[] = Object.keys(spriteMap) as SpriteKey[]
 
-export const ITEMS: Item[] = ITEM_IMAGES.map(image => ({
+export const ITEMS: Item[] = SPRITE_KEYS.map(spriteKey => ({
   content: "item",
-  value: image ? image : "",
+  value: spriteKey,
   hidden: false,
 }))
+

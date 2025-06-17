@@ -1,18 +1,13 @@
 import { motion } from "motion/react"
 import { useMemo, useState } from "react"
 import type { Level, GameStage, TSlot } from "./lib/definitions"
-import { useCountdownTimer, useLightsOutTransition } from "./lib/hooks"
-import { StartScreen, Cabinet, Picker, Stats } from "./ui"
-
-import { 
-  calcNextLevel, 
-  makeRound, 
-  revealByValue,
-  toggleHidden,
-} from "./lib/functions"
-import { ResultScreen } from "./ui/result-screen"
+import { useCountdownTimer, useLightsOutTransition, usePreloadImages } from "./lib/hooks"
+import { StartScreen, Cabinet, Picker, Stats, ResultScreen } from "./ui"
+import { calcNextLevel, makeRound, revealByValue, toggleHidden } from "./lib/functions"
 
 export function App() {
+  // usePreloadImages()
+
   const [level, setLevel] = useState<Level>({ shelves: 1, slots: 5, attempts: 1 })
   const [strikes, setStrikes] = useState(0)
   const [gameStage, setGameStage] = useState<GameStage>("start")

@@ -1,0 +1,260 @@
+{
+  "src\\assets\\items\\women-shoe.png": {
+    "x": 97,
+    "y": 0,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\wine-bar.png": {
+    "x": 0,
+    "y": 97,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\wallet.png": {
+    "x": 96,
+    "y": 97,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\voice-recorder.png": {
+    "x": 193,
+    "y": 0,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\trophy.png": {
+    "x": 193,
+    "y": 96,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\toilet-paper.png": {
+    "x": 0,
+    "y": 193,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\souvenir-from-vacation.png": {
+    "x": 96,
+    "y": 193,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\santa-hat.png": {
+    "x": 192,
+    "y": 193,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\sand-timer.png": {
+    "x": 289,
+    "y": 0,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\potted-plant.png": {
+    "x": 289,
+    "y": 96,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\paint-bucket.png": {
+    "x": 289,
+    "y": 192,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\open-end-wrench.png": {
+    "x": 0,
+    "y": 289,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\nail-polish.png": {
+    "x": 96,
+    "y": 289,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\mortarboard.png": {
+    "x": 192,
+    "y": 289,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\milk.png": {
+    "x": 288,
+    "y": 289,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\microscope.png": {
+    "x": 385,
+    "y": 0,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\literature.png": {
+    "x": 385,
+    "y": 96,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\lava-lamp.png": {
+    "x": 385,
+    "y": 192,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\kiwi-bird.png": {
+    "x": 385,
+    "y": 288,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\hand-fan.png": {
+    "x": 0,
+    "y": 385,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\greek-helmet.png": {
+    "x": 96,
+    "y": 385,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\folk-music.png": {
+    "x": 192,
+    "y": 385,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\fire-extinguisher.png": {
+    "x": 288,
+    "y": 385,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\explosive.png": {
+    "x": 384,
+    "y": 385,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\eggplant.png": {
+    "x": 0,
+    "y": 0,
+    "width": 97,
+    "height": 97
+  },
+  "src\\assets\\items\\diamond.png": {
+    "x": 481,
+    "y": 0,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\cookie-jar.png": {
+    "x": 481,
+    "y": 96,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\confectionery.png": {
+    "x": 481,
+    "y": 192,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\comb.png": {
+    "x": 481,
+    "y": 288,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\coffee-to-go.png": {
+    "x": 481,
+    "y": 384,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\coconut.png": {
+    "x": 0,
+    "y": 481,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\clew.png": {
+    "x": 96,
+    "y": 481,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\car-alarm-remote.png": {
+    "x": 192,
+    "y": 481,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\calculator.png": {
+    "x": 288,
+    "y": 481,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\binoculars.png": {
+    "x": 384,
+    "y": 481,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\bass-drum.png": {
+    "x": 480,
+    "y": 481,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\basketball.png": {
+    "x": 577,
+    "y": 0,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\banknotes.png": {
+    "x": 577,
+    "y": 96,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\banana.png": {
+    "x": 577,
+    "y": 192,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\archeology.png": {
+    "x": 577,
+    "y": 288,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\aquarium.png": {
+    "x": 577,
+    "y": 384,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\amanita.png": {
+    "x": 577,
+    "y": 480,
+    "width": 96,
+    "height": 96
+  },
+  "src\\assets\\items\\alarm-clock.png": {
+    "x": 0,
+    "y": 577,
+    "width": 96,
+    "height": 96
+  }
+}

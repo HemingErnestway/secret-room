@@ -1,10 +1,12 @@
-import spriteMap from "../assets/items-sprite.json"
+import itemSpriteMap from "../assets/items-sprite.json"
+import lockedBgSpriteMap from "../assets/locked-bgs-sprite.json"
 
-export type SpriteKey = keyof typeof spriteMap
+export type ItemSpriteKey = keyof typeof itemSpriteMap
+export type LockedBgSpriteKey = keyof typeof lockedBgSpriteMap
 
 export type Item = { 
   content: "item"; 
-  value: SpriteKey; 
+  value: ItemSpriteKey; 
   hidden: boolean;
 }
 

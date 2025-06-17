@@ -48,34 +48,3 @@ export function useLockedBackgrounds() {
   const assets = import.meta.glob("/src/assets/locked-bg/*.svg", { eager: true })
   return Object.keys(assets).map((path) => path.split('/').pop()?.split('.')[0])
 }
-
-export function useItemImages() {
-  const assets = import.meta.glob("/src/assets/items/*.png", { eager: true })
-  return Object.keys(assets).map((path) => path.split('/').pop()?.split('.')[0])
-}
-
-export function preloadImages() {
-  const images = import.meta.glob(
-    ["/src/assets/items/*.png", "/src/assets/locked-bg/*.svg"],
-    { eager: true, import: "default" },
-  )
-
-  Object.values(images).forEach(src => {
-    const img = new Image()
-    img.src = src as string
-  })
-}
-
-export function usePreloadImages() {
-  useEffect(() => {
-    const images = import.meta.glob(
-      ["/src/assets/items/*.png", "/src/assets/locked-bg/*.svg"],
-      { eager: true, import: "default" },
-    )
-
-    Object.values(images).forEach(src => {
-      const img = new Image()
-      img.src = src as string
-    })
-  }, [])
-}

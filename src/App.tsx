@@ -169,7 +169,6 @@ export function App() {
         {gameStage === "result" && (
           <>
             <ResultScreen level={level} />
-            {/* <div style={{ height: "190px", background: "var(--color-bg-light)" }}></div> */}
             <div className="start-container">
               <motion.button 
                 onClick={handleRestart}

@@ -1,11 +1,12 @@
-import spriteMap from "../assets/items-sprite.json"
-import type { Item, SpriteKey, TShelf } from "./definitions"
-import { useLockedBackgrounds } from "./hooks"
+import itemSpriteMap from "../assets/items-sprite.json"
+import lockedBgSpriteMap from "../assets/locked-bgs-sprite.json"
 
-export const LOCKED_BACKGROUNDS = useLockedBackgrounds()
-export const SPRITE_KEYS: SpriteKey[] = Object.keys(spriteMap) as SpriteKey[]
+import type { Item, ItemSpriteKey, LockedBgSpriteKey, TShelf } from "./definitions"
 
-export const ITEMS: Item[] = SPRITE_KEYS.map(spriteKey => ({
+const ITEM_SPRITE_KEYS = Object.keys(itemSpriteMap) as ItemSpriteKey[]
+export const LOCKED_BG_SPRITE_KEYS = Object.keys(lockedBgSpriteMap) as LockedBgSpriteKey[]
+
+export const ITEMS: Item[] = ITEM_SPRITE_KEYS.map(spriteKey => ({
   content: "item",
   value: spriteKey,
   hidden: false,

@@ -1,12 +1,11 @@
-import { type TShelf } from "../lib/definitions"
+import { MOCK_SHELF } from "../lib/constants"
 import { Shelf } from "../ui"
 
 export function StartScreen() {
-  const shelf: TShelf = [...Array(5).keys()].map(i => ({ content: "locked", id: i }))
 
   return (
     <div className="start-screen">
-      <Shelf shelf={shelf} />
+      <Shelf shelf={MOCK_SHELF} />
       <div className="title-group">
         <p>Welcome to the</p>
         <h2>Secret Room</h2>
@@ -18,7 +17,7 @@ export function StartScreen() {
         Then the lights go out for a second. You need to choose which objects were actually in the cabinet before and which are fake.
       </p>
       <p>Good luck!</p>
-      <Shelf shelf={shelf} />
+      <Shelf shelf={MOCK_SHELF} />
     </div>
   )
 }

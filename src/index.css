@@ -89,13 +89,19 @@ h2 {
 
 .result-screen {
   background: var(--color-bg-dark);
-  width: 310px;
-  height: 473px;
+  width: 290px;
+  height: 453px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.result-screen .shelf-group {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 
 .cabinet {
@@ -155,7 +161,6 @@ h2 {
 .indicator {
   width: 12px;
   height: 16px;
-  /* border-radius: 6px; */
 }
 
 .indicator-empty {

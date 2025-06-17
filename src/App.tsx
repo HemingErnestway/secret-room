@@ -1,13 +1,11 @@
 import { motion } from "motion/react"
 import { useMemo, useState } from "react"
 import type { Level, GameStage, TSlot } from "./lib/definitions"
-import { useCountdownTimer, useLightsOutTransition, usePreloadImages } from "./lib/hooks"
+import { useCountdownTimer, useLightsOutTransition } from "./lib/hooks"
 import { StartScreen, Cabinet, Picker, Stats, ResultScreen } from "./ui"
 import { calcNextLevel, makeRound, revealByValue, toggleHidden } from "./lib/functions"
 
 export function App() {
-  // usePreloadImages()
-
   const [level, setLevel] = useState<Level>({ shelves: 1, slots: 5, attempts: 1 })
   const [strikes, setStrikes] = useState(0)
   const [gameStage, setGameStage] = useState<GameStage>("start")
@@ -89,7 +87,7 @@ export function App() {
     const nextStrikes = strikes + 1
     setStrikes(nextStrikes)    
   
-    if (nextStrikes >= 3) {
+    if (nextStrikes >= 3 || timerExpired) {
       setGameStage("result")
       return
     }
@@ -123,10 +121,7 @@ export function App() {
             <div className="start-container">
               <motion.button 
                 onClick={handleStart}
-                whileHover={{ 
-                  scale: 1.1, 
-                  transition: { duration: 0.1 } 
-                }}
+                whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
               >
                 Start
               </motion.button>
@@ -142,10 +137,7 @@ export function App() {
           <div className="ready-container">
             <motion.button 
               onClick={handleGuessing}
-              whileHover={{ 
-                scale: 1.1, 
-                transition: { duration: 0.1 } 
-              }}
+              whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
             >
               Ready
             </motion.button>
@@ -176,8 +168,16 @@ export function App() {
 
         {gameStage === "result" && (
           <>
-            <ResultScreen level={level} handleRestart={handleRestart} />
-            <div style={{ height: "190px", background: "var(--color-bg-light)" }}></div>
+            <ResultScreen level={level} />
+            {/* <div style={{ height: "190px", background: "var(--color-bg-light)" }}></div> */}
+            <div className="start-container">
+              <motion.button 
+                onClick={handleRestart}
+                whileHover={{ scale: 1.1, transition: { duration: 0.1 } }}
+              >
+                Restart
+              </motion.button>
+            </div>
           </>
         )}
       </div>

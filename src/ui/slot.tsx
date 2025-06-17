@@ -6,12 +6,10 @@ import { type TSlot } from "../lib/definitions"
 
 
 export function Slot({ slot }: { slot: TSlot }) {
-  // const bg 
-  //   = slot.content === "locked" ? `url("/src/assets/locked-bg/${LOCKED_BACKGROUNDS[slot.id % 4]}.svg")`
-  //   : slot.content === "item" ? `url("/src/assets/items/${slot.value}.png")` : ""
+  
 
   const hidden = slot.content === "item" && slot.hidden ? "hidden" : ""
-  const hasBgStyle = !(slot.content === "empty" || slot.content === "item" && slot.hidden || slot.content === "locked")
+  const hasBgStyle = slot.content === "item" && !slot.hidden
 
   let bgStyle = {}
 
@@ -36,7 +34,13 @@ export function Slot({ slot }: { slot: TSlot }) {
   return (
     <div 
       className={`slot ${hidden} ${slot.content === "item" ? "item" : ""}`}
-      style={hasBgStyle ? bgStyle : {}}
+      style={
+        hasBgStyle 
+          ? bgStyle 
+          : slot.content === "locked" 
+            ? { background: `url("/src/assets/locked-bg/${LOCKED_BACKGROUNDS[slot.id % 4]}.svg")` }
+            : {}
+      }
     >
       {slot.content === "item" && !slot.hidden}
     </div> 

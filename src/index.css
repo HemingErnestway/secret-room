@@ -98,12 +98,6 @@ h2 {
   padding: 10px;
 }
 
-.result-screen .shelf-group {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
 .cabinet {
   display: flex;
   flex-direction: column;

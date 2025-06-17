@@ -1,21 +1,15 @@
-import { MOCK_SHELF } from "../lib/constants"
+import { KIWI, MOCK_SHELF } from "../lib/constants"
 import { type Level } from "../lib/definitions"
-import { Shelf } from "./shelf"
+import { Shelf, Slot } from "../ui"
 
 export function ResultScreen({ level }: { level: Level }) {
   const score = ((level.shelves * 5 + level.slots - 1) * 3 + level.attempts) * 10
 
   return (
     <div className="result-screen">
-      <div className="shelf-group">
-        <Shelf shelf={MOCK_SHELF} />
-        <Shelf shelf={MOCK_SHELF} />
-      </div>
+      <Shelf shelf={MOCK_SHELF} />
       <h2>Score: {score}</h2>
-      <div className="shelf-group">
-        <Shelf shelf={MOCK_SHELF} />
-        <Shelf shelf={MOCK_SHELF} />
-      </div>
+      <Slot slot={KIWI} />
     </div>
   )
 }
